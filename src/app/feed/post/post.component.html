@@ -1,10 +1,11 @@
 <div *ngIf="post" class="card" style="width: 18rem" data-bs-theme="dark">
   <img src="..." class="card-img-top" alt="..." />
   <div class="card-body">
-    <h5 class="card-title">{{ post.value }}</h5>
-    <p class="card-text mb-0">
-      {{ post.value }}
+    <h5 class="card-title">{{ post.user }}</h5>
+    <p #postContent class="card-text mb-0">
+      {{ post.content }}
     </p>
+    <i *ngIf="textOverflow"> (See more...) </i>
     <p class="card-text">
       <i class="blockquote-footer">
         {{ formatedDate }}

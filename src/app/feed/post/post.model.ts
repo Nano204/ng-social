@@ -1,4 +1,5 @@
 export interface Post {
-  value: string;
+  user: string;
+  content: string;
   date: Date;
 }
