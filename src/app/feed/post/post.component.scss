@@ -1,8 +1,13 @@
 .card-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limita el texto a tres líneas */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis; /* Agrega elipsis (...) al texto desbordado */
-    white-space: normal; /* Permite el ajuste de palabras en líneas */
-  }
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limita el texto a tres líneas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Agrega elipsis (...) al texto desbordado */
+  white-space: normal; /* Permite el ajuste de palabras en líneas */
+}
+
+.interactions {
+  display: flex;
+  justify-content: space-between;
+}

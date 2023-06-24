@@ -11,6 +11,25 @@
         {{ formatedDate }}
       </i>
     </p>
-    <a href="#" class="btn btn-primary">Go</a>
+    <div class="interactions">
+      <button class="btn btn-terciary">
+        <i class="bi bi-suit-heart"></i>
+      </button>
+      <button class="btn btn-primary" (click)="toggleCollapse()">
+        <i class="bi bi-chat-left-dots"></i>
+      </button>
+    </div>
+    <div *ngIf="!collapse">
+      <form>
+        <div class="mb-3 mt-3">
+          <textarea
+            class="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
 </div>

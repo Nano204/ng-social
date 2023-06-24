@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Post } from './post.model';
 
 @Component({
@@ -13,24 +6,27 @@ import { Post } from './post.model';
   templateUrl: './post.component.html',
   styleUrls: ['./post.component.scss'],
 })
-export class PostComponent implements OnInit, AfterViewInit {
+export class PostComponent implements OnInit {
   @ViewChild('postContent') postContentRef!: ElementRef;
   @Input() post: Post | null = null;
   formatedDate?: string;
-  textOverflow: boolean = false;
+  textOverflow?: boolean;
+  collapse: boolean = true;
 
   ngOnInit(): void {
     this.formatedDate = this.post?.date.toDateString();
-  }
-
-  ngAfterViewInit(): void {
-    this.checkOverflow();
+    setTimeout(() => {
+      this.checkOverflow();
+    }, 0);
   }
 
   checkOverflow() {
     const postContent = this.postContentRef.nativeElement;
-    if (postContent.offsetHeight < postContent.scrollHeight) {
-      this.textOverflow = true;
-    }
+    this.textOverflow = postContent.offsetHeight < postContent.scrollHeight;
+  }
+
+  toggleCollapse() {
+    console.log(this.collapse);
+    this.collapse = !this.collapse;
   }
 }
