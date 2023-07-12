@@ -1,19 +1,19 @@
 @import "../../../../node_modules/bootstrap/scss/functions";
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/mixins";
-#navbarNavAltMarkup {
-  justify-content: center;
-}
-
-.active {
-  background-color: $primary;
-}
-
-.nav-link {
-  cursor: pointer;
-}
-
-.login_form{
+.login_form {
+  padding: 10px;
   position: absolute;
   z-index: 2;
+  right: 1rem;
+  top: 3rem;
+  border-radius: 1rem;
+  border: solid 3px;
+}
+
+.link {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
 }

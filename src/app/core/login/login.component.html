@@ -1,0 +1,62 @@
+<form
+  #loginForm="ngForm"
+  (ngSubmit)="login()"
+  data-bs-theme="dark"
+  class="mb-3 login_form bg-secondary-subtle border-info-subtle text-primary-emphasis"
+>
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input
+    [(ngModel)]="email"
+    name="email"
+    type="email"
+    class="form-control"
+    id="exampleFormControlInput1"
+    placeholder="name@example.com"
+    required="true"
+    pattern="^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,9}$"
+  />
+  <div class="col-auto">
+    <label for="inputPassword" class="col-form-label">Password</label>
+  </div>
+  <div class="col-auto">
+    <input
+      [(ngModel)]="password"
+      name="password"
+      type="password"
+      id="inputPassword"
+      class="form-control"
+      aria-labelledby="passwordHelpInline"
+      minlength="8"
+      required="true"
+    />
+  </div>
+  <div class="col-auto">
+    <span id="passwordHelpInline" class="form-text">
+      Must be 8-20 characters long.
+    </span>
+  </div>
+  <div *ngIf="existingUser; else elseBlock">
+    <p
+      class="form-text text-info-emphasis link"
+      (click)="toogleExistenceUser()"
+    >
+      Are you new?
+    </p>
+  </div>
+  <ng-template #elseBlock>
+    <p
+      class="form-text text-info-emphasis link"
+      (click)="toogleExistenceUser()"
+    >
+      Do you have a user?
+    </p>
+  </ng-template>
+  <button
+    type="submit"
+    class="btn btn-outline-info"
+    [disabled]="loginForm.invalid"
+    [ngClass]="{ 'btn-outline-secondary': loginForm.invalid }"
+  >
+    {{ existingUser ? "Login" : "Singup" }}
+  </button>
+</form>

@@ -17,9 +17,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="btn btn-dark" routerLink="/feed" routerLinkActive="active">Feed</a>
-        <a class="btn btn-dark" routerLink="/chat" routerLinkActive="active">Chat</a>
+        <a class="btn btn-dark" routerLink="/feed" routerLinkActive="active"
+          >Feed</a
+        >
+        <a class="btn btn-dark" routerLink="/chat" routerLinkActive="active"
+          >Chat</a
+        >
       </div>
     </div>
+    <button class="btn btn-info" (click)="showLogin()">Login</button>
+    <ngsocial-login *ngIf="loginIsVisible"></ngsocial-login>
   </div>
 </nav>
