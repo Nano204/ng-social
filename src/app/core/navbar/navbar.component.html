@@ -25,7 +25,18 @@
         >
       </div>
     </div>
-    <button class="btn btn-info" (click)="showLogin()">Login</button>
-    <ngsocial-login *ngIf="loginIsVisible"></ngsocial-login>
+    <div class="user_interaction">
+      <div *ngIf="isLogged; else notLogged">
+        <span class="text-light-emphasis px-3">{{ loggedUser }}</span>
+        <button class="btn btn-primary" (click)="logout()">Logout</button>
+      </div>
+      <ng-template #notLogged>
+        <button class="btn btn-info" (click)="showLogin()">Login</button>
+      </ng-template>
+    </div>
+    <ngsocial-login
+      *ngIf="loginIsVisible"
+      (loginEvent)="updateLogStatus()"
+    ></ngsocial-login>
   </div>
 </nav>

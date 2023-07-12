@@ -13,7 +13,12 @@
   cursor: pointer;
 }
 
-.login_form{
+.login_form {
   position: absolute;
   z-index: 2;
+}
+
+.user_interaction {
+  display: flex;
+  align-items: center;
 }
