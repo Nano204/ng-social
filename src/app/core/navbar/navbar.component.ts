@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
@@ -6,14 +6,20 @@ import { LoginService } from 'src/app/services/login/login.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   constructor(private loginService: LoginService) {}
 
   loginIsVisible: boolean = false;
   isLogged = this.loginService.isLogged();
   loggedUser = this.loginService.getLoggedUsername();
 
-  showLogin() {
+  ngOnInit() {
+    this.loginService.notLoggedAction.subscribe(() => {
+      this.loginIsVisible = true;
+    });
+  }
+
+  toggleLoginMenu() {
     this.loginIsVisible = !this.loginIsVisible;
   }
 

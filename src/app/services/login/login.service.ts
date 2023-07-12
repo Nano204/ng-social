@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, map } from 'rxjs';
 
 type UserData = { username: string; password: string };
@@ -9,6 +9,7 @@ type LoginResponse = { access_token: string };
   providedIn: 'root',
 })
 export class LoginService {
+  @Output() notLoggedAction = new EventEmitter();
   constructor(private http: HttpClient) {}
   private host = 'http://localhost:3000';
 
@@ -42,5 +43,9 @@ export class LoginService {
   logout() {
     localStorage.removeItem('username');
     localStorage.removeItem('access_token');
+  }
+
+  inviteToLogin() {
+    this.notLoggedAction.emit()
   }
 }

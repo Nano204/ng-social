@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Post } from './post.model';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/services/login/login.service';
 
 @Component({
   selector: 'ngsocial-post',
@@ -14,7 +15,7 @@ export class PostComponent implements OnInit {
   textOverflow?: boolean;
   collapse: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   ngOnInit(): void {
     this.formatedDate = this.post?.date.toDateString();
@@ -29,8 +30,11 @@ export class PostComponent implements OnInit {
   }
 
   toggleCollapse() {
-    console.log(this.collapse);
-    this.collapse = !this.collapse;
+    if (this.loginService.isLogged()) {
+      this.collapse = !this.collapse;
+    }
+    this.loginService.inviteToLogin()
+    this.collapse = true;
   }
 
   goToPost() {
