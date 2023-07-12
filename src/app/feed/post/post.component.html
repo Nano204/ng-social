@@ -5,7 +5,7 @@
     <p #postContent class="card-text mb-0">
       {{ post.content }}
     </p>
-    <i *ngIf="textOverflow"> (See more...) </i>
+    <i *ngIf="textOverflow" class="see-more-label text-primary-emphasis" (click)="goToPost()"> (See more...) </i>
     <p class="card-text">
       <i class="blockquote-footer">
         {{ formatedDate }}

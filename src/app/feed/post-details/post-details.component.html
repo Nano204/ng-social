@@ -1,0 +1,43 @@
+<div class="card text-center card-details-box" data-bs-theme="dark">
+  <img src="..." class="rounded mx-auto d-block" alt="..." />
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item" (click)="onSelectSection(sections.description)">
+        <a
+          class="nav-link"
+          [ngClass]="{ active: activeSection === sections.description }"
+          [attr.aria-current]="
+            activeSection === sections.description ? 'page' : null
+          "
+          >Description</a
+        >
+      </li>
+      <li class="nav-item" (click)="onSelectSection(sections.comments)">
+        <a
+          class="nav-link active"
+          [ngClass]="{ active: activeSection === sections.comments }"
+          [attr.aria-current]="
+            activeSection === sections.comments ? 'page' : null
+          "
+          >Comments</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="activeSection === sections.description" class="card-body">
+    <h5 class="card-title">{{ post.user }}</h5>
+    <p #postContent class="card-text mb-0">
+      {{ post.content }}
+    </p>
+    <p class="card-text">
+      <i class="blockquote-footer">
+        {{ formatedDate }}
+      </i>
+    </p>
+    <div class="interactions">
+      <button class="btn btn-terciary">
+        <i class="bi bi-suit-heart"></i>
+      </button>
+    </div>
+  </div>
+</div>
